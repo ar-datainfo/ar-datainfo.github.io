@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anirudh Raghavendra — Data Analyst & Scientist</title>
+
+<!-- Open Graph / LinkedIn preview -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Anirudh Raghavendra — Data Analyst & Scientist" />
+<meta property="og:description" content="Building AI tools, dashboards, and data systems that turn complexity into clarity. Based in Irvine, CA." />
+<meta property="og:url" content="https://anirudhragh7.github.io" />
+<meta name="description" content="Portfolio of Anirudh Raghavendra — Data Analyst & Scientist. MS in Business Analytics & AI from UT Dallas." />
+<meta name="theme-color" content="#F4F6FB" />
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet" />
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:   #F0F4FB;
+  --paper2:  #E4EAF5;
+  --paper3:  #D8E0F0;
+  --ink:     #0F1623;
+  --ink2:    #2D3A52;
+  --ink3:    #5A6A85;
+  --ink4:    #8C9AB5;
+  --blue:    #2A52A0;
+  --blue-l:  #E0E8F8;
+  --blue-m:  #5B7EC9;
+  --border:  rgba(15,22,35,0.09);
+  --border2: rgba(15,22,35,0.05);
+  --serif:   'Fraunces', Georgia, serif;
+  --lora:    'Fraunces', Georgia, serif;
+  --sans:    'Manrope', system-ui, sans-serif;
+  --ease:    cubic-bezier(0.4, 0, 0.2, 1);
+}
+body.dark {
+  --paper:   #1E2433;
+  --paper2:  #252B3B;
+  --paper3:  #2D3448;
+  --ink:     #E2E8F4;
+  --ink2:    #B0BCCE;
+  --ink3:    #7A8BA8;
+  --ink4:    #4A5A72;
+  --blue:    #7AAEE8;
+  --blue-l:  #243050;
+  --blue-m:  #5B7EC9;
+  --border:  rgba(226,232,244,0.08);
+  --border2: rgba(226,232,244,0.04);
+}
+
+
+
+
+*, *::before, *::after {
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.85;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  cursor: auto;
+  overflow-x: hidden;
+}
+
+/* CUSTOM CURSOR */
+.cursor { display: none; }
+.cursor-ring { display: none; }
+body:hover .cursor { opacity: 1; }
+a:hover ~ .cursor, button:hover ~ .cursor { width: 18px; height: 18px; }
+
+/* PROGRESS BAR */
+.progress-bar {
+  position: fixed; top: 0; left: 0; z-index: 1000;
+  height: 2px; background: var(--blue);
+  width: 0%; transition: width 0.1s linear;
+}
+
+/* TOP BAR */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 52px; background: var(--paper);
+  border-bottom: 0.5px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.75rem;
+}
+.topbar-left { display: flex; align-items: center; gap: 1rem; }
+.topbar-hamburger {
+  background: none; border: none; cursor: pointer;
+  display: flex; flex-direction: column; gap: 5px; padding: 6px;
+  border-radius: 4px; transition: background 0.2s;
+}
+.topbar-hamburger:hover { background: var(--blue-l); }
+.topbar-hamburger span {
+  display: block; width: 20px; height: 1.5px;
+  background: var(--ink2); border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+body.nav-open .topbar-hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+body.nav-open .topbar-hamburger span:nth-child(2) { opacity: 0; }
+body.nav-open .topbar-hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.topbar-name { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); }
+.topbar-right { display: flex; align-items: center; }
+.theme-btn {
+  background: none; border: 0.5px solid var(--border);
+  border-radius: 4px; padding: 6px 14px; cursor: pointer;
+  font-family: var(--sans); font-size: 11.5px; color: var(--ink3);
+  display: flex; align-items: center; gap: 6px;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.theme-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-l); }
+
+/* SIDEBAR — hidden by default, slides in */
+.sidebar {
+  position: fixed; top: 52px; left: 0; bottom: 0;
+  width: 240px; z-index: 150;
+  background: var(--paper);
+  border-right: 0.5px solid var(--border);
+  display: flex; flex-direction: column;
+  padding: 2rem 1.5rem; overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s var(--ease);
+  box-shadow: none;
+}
+body.nav-open .sidebar {
+  transform: translateX(0);
+  box-shadow: 4px 0 24px rgba(0,0,0,0.08);
+}
+.sidebar-nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.sidebar-nav a {
+  font-size: 13px; color: var(--ink3); text-decoration: none;
+  padding: 9px 12px; border-radius: 4px;
+  letter-spacing: 0.02em; transition: background 0.2s, color 0.2s;
+  display: flex; align-items: center; gap: 10px;
+}
+.sidebar-nav a::before {
+  content: ''; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--border); flex-shrink: 0; transition: background 0.2s;
+}
+.sidebar-nav a:hover { color: var(--blue); background: var(--blue-l); }
+.sidebar-nav a:hover::before { background: var(--blue); }
+.sidebar-nav a.active { color: var(--blue); font-weight: 500; }
+.sidebar-nav a.active::before { background: var(--blue); }
+.sidebar-footer {
+  padding-top: 1.5rem; border-top: 0.5px solid var(--border);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.sidebar-link {
+  font-size: 11.5px; color: var(--ink4); text-decoration: none;
+  transition: color 0.2s; display: flex; align-items: center; gap: 6px;
+}
+.sidebar-link:hover { color: var(--blue); }
+
+/* OVERLAY */
+.sidebar-overlay {
+  display: none; position: fixed; inset: 52px 0 0 0;
+  background: rgba(0,0,0,0.2); z-index: 140;
+}
+body.nav-open .sidebar-overlay { display: block; }
+
+/* MAIN CONTENT — full width, only pushed down by topbar */
+.main-content { margin-top: 52px; margin-left: 0; }
+
+/* OPENING + ABOUT merged */
+.opening-about {
+  background: var(--paper);
+  min-height: 100vh;
+}
+.opening-hero { display: block; }
+.opening-eyebrow {
+  font-size: 0.85rem;
+  color: var(--blue); margin-bottom: 1.5rem;
+  display: block;
+}
+.opening-role {
+  font-size: 13.5px; color: var(--ink3);
+  letter-spacing: 0.02em; margin-top: 1rem;
+}
+.opening-name {
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  line-height: 0.95; letter-spacing: -0.03em;
+  font-weight: 400;
+}
+.opening-name span { color: var(--blue); }
+.opening-line {
+  width: 48px; height: 1.5px; background: var(--blue-l);
+  margin: 1.75rem 0 0;
+}
+.opening-scroll {
+  display: flex; align-items: center; gap: 12px;
+}
+.scroll-line {
+  width: 40px; height: 0.5px; background: var(--ink3);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+.scroll-text {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink3);
+}
+
+/* SECTION WRAPPER */
+.section-wrap {
+  max-width: 900px; margin: 0 auto;
+  padding: 5rem 2.5rem;
+}
+.section-label {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 0.75rem; font-weight: 500;
+}
+.section-label::before {
+  content: ''; width: 24px; height: 1.5px; background: var(--blue);
+}
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 400; line-height: 1.1;
+  margin-bottom: 3rem;
+}
+h2 em {  color: var(--blue); }
+
+/* DIVIDER */
+.full-divider {
+  border: none; height: 1px;
+  background: linear-gradient(to right, transparent 0%, var(--blue-m) 30%, var(--blue-m) 70%, transparent 100%);
+  opacity: 0.2; margin: 0;
+}
+
+/* SECTION BACKGROUNDS — alternating chapters */
+#about      { background: var(--paper); }
+#projects   { background: var(--paper2); }
+#skills     { background: var(--paper); }
+#experience { background: var(--paper2); }
+#contact    { background: var(--paper); }
+
+/* CHAPTER MARKER */
+.chapter-marker {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;
+}
+.chapter-marker-num {
+  font-family: var(--serif); font-size: 4rem; font-weight: 400;
+  color: var(--paper3); line-height: 1; user-select: none;
+  transition: color 0.4s;
+}
+section:hover .chapter-marker-num { color: var(--blue-l); }
+.chapter-marker-right { display: flex; flex-direction: column; gap: 4px; padding-bottom: 4px; }
+.chapter-marker-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--blue); font-weight: 500;
+  display: flex; align-items: center; gap: 8px;
+}
+.chapter-marker-label::before { content: ''; width: 24px; height: 1.5px; background: var(--blue); }
+
+/* ABOUT */
+.about-layout {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 7rem; align-items: start;
+}
+.about-body p {
+  font-family: var(--sans);
+  font-size: 1.05rem; color: var(--ink2);
+  line-height: 2.0; margin-bottom: 1.6rem;
+  font-weight: 300;
+}
+.about-body p:last-child { margin-bottom: 0; }
+.about-body strong { color: var(--ink); font-weight: 500; }
+.about-aside { display: flex; flex-direction: column; gap: 1.5rem; }
+.aside-card {
+  background: var(--paper2);
+  border: 0.5px solid var(--border);
+  border-radius: 4px; padding: 1.5rem;
+}
+.aside-card-label {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--blue); font-weight: 500; margin-bottom: 1rem;
+}
+.aside-card-title {
+  font-family: var(--serif); font-size: 1rem; line-height: 1.35;
+  margin-bottom: 0.35rem;
+}
+.aside-card-sub { font-size: 12.5px; color: var(--ink3); }
+.aside-card-year { font-size: 11.5px; color: var(--ink4); margin-top: 4px; }
+.edu-divider { border: none; border-top: 0.5px solid var(--border); margin: 1rem 0; }
+.availability {
+  display: flex; align-items: center; gap: 10px;
+  padding: 1rem 1.25rem;
+  background: var(--blue-l);
+  border: 0.5px solid rgba(42,82,160,0.2);
+  border-radius: 4px;
+}
+.avail-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--blue); flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(42,82,160,0.2);
+  animation: pulse 2s ease-in-out infinite;
+}
+.avail-text { font-size: 13px; color: var(--blue); font-weight: 500; }
+.avail-sub { font-size: 12px; color: var(--blue-m); }
+
+/* SKILLS */
+.skills-layout { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3.5rem; }
+.skill-group-title {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink3);
+  margin-bottom: 1.5rem; padding-bottom: 0.85rem;
+  border-bottom: 0.5px solid var(--border);
+}
+.skill-list { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+.skill-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13.5px; color: var(--ink2);
+}
+.skill-list li::before {
+  content: ''; width: 4px; height: 4px;
+  border-radius: 50%; background: var(--blue); flex-shrink: 0;
+}
+.certs-row {
+  grid-column: 1 / -1;
+  display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;
+  padding-top: 2rem; border-top: 0.5px solid var(--border);
+}
+.cert-badge {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px;
+  background: var(--paper2); border: 0.5px solid var(--border);
+  border-radius: 2px; font-size: 12.5px; color: var(--ink2);
+  transition: border-color 0.2s, color 0.2s;
+}
+.cert-badge:hover { border-color: var(--blue); color: var(--blue); }
+.cert-badge::before {
+  content: '✦'; font-size: 9px; color: var(--blue);
+}
+
+/* PROJECTS */
+.projects-intro {
+  font-family: var(--sans); 
+  font-size: 1rem; color: var(--ink3);
+  margin-top: -1.5rem; margin-bottom: 3rem;
+  max-width: 480px;
+}
+.project-item {
+  border-top: 0.5px solid var(--border);
+  padding: 3.5rem 0;
+  display: grid; grid-template-columns: 80px 1fr auto;
+  gap: 2.5rem; align-items: start;
+  transition: background 0.3s;
+  cursor: default;
+}
+.project-item:last-child { border-bottom: 0.5px solid var(--border); }
+.project-num {
+  font-family: var(--serif); font-size: 2.5rem;
+  color: var(--paper3); line-height: 1; font-weight: 400;
+  transition: color 0.3s;
+  user-select: none;
+}
+.project-item:hover .project-num { color: var(--blue-m); }
+.project-body { }
+.project-category {
+  font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 0.6rem; font-weight: 500;
+}
+.project-title {
+  font-family: var(--serif); font-size: 1.5rem;
+  font-weight: 400; line-height: 1.2; margin-bottom: 0.75rem;
+  transition: color 0.2s;
+}
+.project-item:hover .project-title { color: var(--blue); }
+.project-desc {
+  font-size: 14.5px; color: var(--ink3);
+  line-height: 1.95; max-width: 600px;
+  font-weight: 300;
+}
+.project-impact {
+  margin-top: 1rem; padding: 0.85rem 1.1rem;
+  background: var(--paper2); border-left: 2px solid var(--blue);
+  font-size: 13px; color: var(--ink2); line-height: 1.7;
+   font-family: var(--sans);
+}
+.project-tags {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem;
+}
+.project-tag {
+  font-size: 11px; color: var(--ink4);
+  border: 0.5px solid var(--border); border-radius: 2px;
+  padding: 3px 9px; transition: border-color 0.2s, color 0.2s;
+}
+.project-item:hover .project-tag { border-color: rgba(42,82,160,0.3); color: var(--ink3); }
+.project-links {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem;
+}
+.project-live {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 500; color: var(--blue);
+  border: 0.5px solid var(--blue); border-radius: 2px;
+  padding: 5px 12px; text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  background: transparent;
+}
+.project-live:hover { background: var(--blue); color: var(--paper); }
+.project-live-ghost { color: var(--ink4); border-color: var(--border); }
+.project-live-ghost:hover { background: var(--blue-l); color: var(--blue); border-color: var(--blue); }
+.project-live-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.project-soon {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--ink4);
+  border: 0.5px solid var(--border); border-radius: 2px;
+  padding: 5px 12px; margin-top: 1rem;
+  cursor: default;
+}
+.project-arrow {
+  font-size: 1.2rem; color: var(--paper3);
+  transition: color 0.3s, transform 0.3s;
+  margin-top: 6px;
+}
+.project-item:hover .project-arrow { color: var(--blue); transform: translate(3px, -3px); }
+
+/* EXPERIENCE */
+.exp-item {
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 3rem; padding: 3.5rem 0;
+  border-top: 0.5px solid var(--border);
+}
+.exp-item:last-child { border-bottom: 0.5px solid var(--border); }
+.exp-date { font-size: 12.5px; color: var(--ink4); padding-top: 4px; }
+.exp-role {
+  font-family: var(--serif); font-size: 1.3rem;
+  font-weight: 400; margin-bottom: 3px;
+}
+.exp-company { font-size: 13px; color: var(--blue); font-weight: 500; margin-bottom: 1rem; }
+.exp-points { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.exp-points li {
+  font-size: 14px; color: var(--ink2); line-height: 1.8;
+  padding-left: 1.2rem; position: relative; font-weight: 300;
+}
+.exp-points li::before {
+  content: '—'; position: absolute; left: 0;
+  color: var(--blue); font-size: 12px;
+}
+
+/* CONTACT */
+.contact-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+}
+.contact-left { }
+.contact-intro {
+  font-family: var(--sans); font-size: 1.05rem;
+  color: var(--ink2); line-height: 1.9; margin-bottom: 2rem;
+  
+}
+.contact-right { display: flex; flex-direction: column; gap: 12px; }
+.contact-link {
+  display: flex; align-items: center; gap: 16px;
+  text-decoration: none; color: var(--ink);
+  font-size: 14px; padding: 1.1rem 1.4rem;
+  border: 0.5px solid var(--border); border-radius: 4px;
+  transition: all 0.25s var(--ease);
+  background: var(--paper);
+  position: relative; overflow: hidden;
+}
+.contact-link::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px; background: var(--blue);
+  transform: scaleY(0); transition: transform 0.25s var(--ease);
+}
+.contact-link:hover { background: var(--paper2); border-color: rgba(42,82,160,0.3); }
+.contact-link:hover::before { transform: scaleY(1); }
+.contact-icon { font-size: 14px; color: var(--blue); width: 18px; text-align: center; }
+.contact-text { flex: 1; }
+.contact-label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink4); }
+.contact-value { font-size: 13.5px; color: var(--ink); margin-top: 1px; }
+.contact-arrow { font-size: 12px; color: var(--ink4); transition: transform 0.2s, color 0.2s; }
+.contact-link:hover .contact-arrow { transform: translate(3px, -3px); color: var(--blue); }
+
+/* FOOTER */
+footer {
+  border-top: 0.5px solid var(--border);
+  padding: 2rem 4rem;
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 900px; margin: 0 auto;
+}
+.footer-text { font-size: 12px; color: var(--ink4); }
+.footer-github {
+  font-size: 12px; color: var(--ink3); text-decoration: none;
+  display: flex; align-items: center; gap: 6px;
+  transition: color 0.2s;
+}
+.footer-github:hover { color: var(--blue); }
+
+/* SCROLL REVEAL */
+.reveal-hidden {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal-hidden.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* KEYFRAMES */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+  0%, 100% { width: 40px; opacity: 1; }
+  50%       { width: 60px; opacity: 0.5; }
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(42,82,160,0.2); }
+  50%       { box-shadow: 0 0 0 6px rgba(42,82,160,0.06); }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  body { cursor: auto; }
+  .cursor, .cursor-ring { display: none; }
+  .section-wrap { padding: 4rem 1.5rem; }
+  .about-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .skills-layout { grid-template-columns: 1fr 1fr; }
+  .project-item { grid-template-columns: 50px 1fr; gap: 1.5rem; }
+  .project-arrow { display: none; }
+  .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+  .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K221NZQ861"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K221NZQ861');
+</script>
+
+</head>
+<body>
+
+<!-- PROGRESS -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="topbar-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="topbar-name">Anirudh Raghavendra</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-btn" id="themeBtn">&#9790; <span id="tl">Dark mode</span></button>
+  </div>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <nav class="sidebar-nav">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="https://github.com/anirudh-rs" target="_blank" class="sidebar-link">&#8599; GitHub</a>
+    <a href="https://linkedin.com/in/anirudhragh7/" target="_blank" class="sidebar-link">&#8599; LinkedIn</a>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+<!-- OPENING + ABOUT merged -->
+<section id="about" class="opening-about">
+  <div class="section-wrap" style="padding-top: 6rem;">
+
+    <div class="opening-hero">
+      <div>
+        <h1 class="opening-name reveal">Anirudh<br><span>Raghavendra</span></h1>
+        <div class="opening-line reveal"></div>
+      </div>
+    </div>
+
+    <div class="about-layout" style="margin-top: 4rem;">
+      <div class="about-body reveal">
+        <p>I'm a data analyst and scientist who's genuinely curious about <strong>why</strong> things happen, not just what happened. That curiosity is what pulls me toward data: the belief that somewhere inside the noise, there's a signal worth finding.</p>
+        <p>I started my career as a <strong>Software Test Engineer at 42Gears</strong>, where I learned that good analysis isn't about running models — it's about asking the right questions. I've carried that thinking into every project since, from forecasting macroeconomic trends to building AI tools that real people can use.</p>
+        <p>I recently completed my <strong>MS in Business Analytics &amp; AI at UT Dallas</strong>, deepening my understanding of machine learning, statistical modelling, and the gap between what data can tell you and what decisions it should drive.</p>
+        <p>Right now, I'm building — and looking for a team where rigorous thinking and clear communication are valued as much as technical skill.</p>
+      </div>
+      <div class="about-aside">
+        <div class="aside-card reveal reveal-delay-1">
+          <div class="aside-card-label">Education</div>
+          <div class="aside-card-title">MS, Business Analytics &amp; Artificial Intelligence</div>
+          <div class="aside-card-sub">The University of Texas at Dallas</div>
+          <div class="aside-card-year">Graduated May 2025</div>
+          <div class="edu-divider"></div>
+          <div class="aside-card-title">BE, Electronics &amp; Communication</div>
+          <div class="aside-card-sub">BNM Institute of Technology, Bengaluru</div>
+          <div class="aside-card-year">Graduated August 2020</div>
+        </div>
+        </div>
+        <div class="aside-card reveal reveal-delay-3" style="background: var(--paper);">
+          <div class="aside-card-label">Find me on</div>
+          <div style="display:flex; flex-direction:column; gap:8px; margin-top:4px;">
+            <a href="https://github.com/anirudh-rs" target="_blank" style="font-size:13px; color:var(--ink2); text-decoration:none; display:flex; align-items:center; gap:8px;">
+              <span style="color:var(--blue);">↗</span> github.com/anirudh-rs
+            </a>
+            <a href="mailto:anirudh.raghavendra7@gmail.com" style="font-size:13px; color:var(--ink2); text-decoration:none; display:flex; align-items:center; gap:8px;"><span style="color:var(--blue);">&#8599;</span> anirudh.raghavendra7@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opening-scroll" style="margin-top: 4rem;">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">Scroll to explore</span>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider" />
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <div class="section-label reveal">Skills</div>
+    <h2 class="reveal">What I work with</h2>
+    <div class="skills-layout">
+      <div class="reveal">
+        <div class="skill-group-title">Analytics &amp; Data</div>
+        <ul class="skill-list">
+          <li>SQL</li>
+          <li>PostgreSQL</li>
+          <li>Python (Pandas, NumPy)</li>
+          <li>Excel &amp; Google Sheets</li>
+          <li>Statistical Analysis</li>
+          <li>EDA &amp; Feature Engineering</li>
+        </ul>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="skill-group-title">Machine Learning &amp; AI</div>
+        <ul class="skill-list">
+          <li>Random Forest &amp; XGBoost</li>
+          <li>ARIMA &amp; Time Series</li>
+          <li>Regression Models</li>
+          <li>NLP (NLTK, spaCy)</li>
+          <li>LangChain &amp; RAG</li>
+          <li>SHAP Explainability</li>
+        </ul>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="skill-group-title">Tools &amp; Platforms</div>
+        <ul class="skill-list">
+          <li>Tableau</li>
+          <li>Streamlit</li>
+          <li>Microsoft Azure</li>
+          <li>Snowflake</li>
+          <li>Jupyter</li>
+        </ul>
+      </div>
+      <div class="certs-row reveal">
+        <div class="aside-card-label" style="width:100%; margin-bottom:0.75rem; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink4);">Certifications</div>
+        <span class="cert-badge">Google Data Analytics</span>
+        <span class="cert-badge">IBM Data Science Professional</span>
+        <span class="cert-badge">Microsoft Power BI Data Analyst Associate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider" />
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-wrap">
+    <div class="section-label reveal">Experience</div>
+    <h2 class="reveal">Where I've worked</h2>
+    <div class="exp-item reveal">
+      <div class="exp-date">Sep 2020 — Sep 2021</div>
+      <div>
+        <div class="exp-role">Software Test Engineer</div>
+        <div class="exp-company">42Gears Mobility Systems · Bengaluru, India</div>
+        <ul class="exp-points">
+          <li>Analysed recurring system defect patterns using structured reporting and data analysis, improving product stability and reducing regression risk.</li>
+          <li>Delivered reproducible findings to engineering teams, reducing defect turnaround time by 20% and accelerating release cycles.</li>
+          <li>Redesigned testing workflows with cross-functional teams and implemented time-series forecasting in Excel, increasing process efficiency by 20% and reducing system downtime.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider" />
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-label reveal">Projects</div>
+    <h2 class="reveal">Things I've built</h2>
+    <p class="projects-intro reveal">Eleven projects — from civilisational collapse patterns to real-time seismic intelligence. All eleven are live and ready to explore.</p>
+
+    <div class="project-item reveal">
+      <div class="project-num">01</div>
+      <div class="project-body">
+        <div class="project-category">Data Science · ML · Network Analysis · Geospatial</div>
+        <div class="project-title">The Collapse Signature Project</div>
+        <p class="project-desc">A full end-to-end data science pipeline investigating whether 4,999 years of civilisational collapse data reveals statistically significant patterns in timing, geography, causality, and resilience. Built on a hand-curated master dataset of 112 civilisations with 54 engineered features, drawing from CLIO-INFRA, Maddison Project, historical atlases, and primary scholarship. Delivered as a three-page Streamlit app — The Story (findings in plain English with statistical proof behind expandable sections), History in Motion (animated GIF territorial maps across 48 geospatial snapshots with an interactive boundary explorer), and The Proof (full clustering stats, spatial autocorrelation, network graph, SHAP chart, counterfactual engine, and complete dataset browser).</p>
+        <div class="project-impact">Five findings confirmed by permutation testing: collapses cluster in time (Z=6.65, p&lt;0.0001) but Moran's I is negative across all five clusters — geographically dispersed, shared systemic cause. 67% align with climate or pandemic events, yet more stressors correlates with slower collapse (r=+0.41). Logistic regression achieves 92.0% leave-one-out accuracy — rise duration is the dominant predictor (SHAP=2.05). Longest causal chain: 7 civilisations, 1,884 years unbroken. Counterfactual engine: Qin Dynasty with Han's institutional patience +81.8% survival; Napoleon with Byzantine resilience +93.0%. Network analysis surfaces Britain as highest out-degree predator and Rome as highest betweenness centrality — both validated against historical consensus without encoding them explicitly.</div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">scikit-learn</span>
+          <span class="project-tag">SHAP</span>
+          <span class="project-tag">NetworkX</span>
+          <span class="project-tag">geopandas</span>
+          <span class="project-tag">Plotly</span>
+          <span class="project-tag">Folium</span>
+          <span class="project-tag">Streamlit</span>
+          <span class="project-tag">SciPy</span>
+        </div>
+        <div class="project-links">
+          <a href="https://huggingface.co/spaces/anirudh-rs/collapse-signature" target="_blank" class="project-live"><span class="project-live-dot"></span> Check it live — Hugging Face</a>
+          <a href="https://github.com/anirudh-rs/collapse-signature" target="_blank" class="project-live project-live-ghost"><span class="project-live-dot"></span> GitHub</a>
+        </div>
+      </div>
+      <div class="project-arrow">&#8599;</div>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">02</div>
+      <div class="project-body">
+        <div class="project-category">Data Engineering · ML · Real-Time API · Streamlit</div>
+        <div class="project-title">Global Earthquake Risk &amp; Seismic Activity Dashboard</div>
+        <p class="project-desc">A real-time seismic risk intelligence platform with no pre-downloaded datasets — every analysis is built fresh from a live USGS Earthquake Catalog API call. The pipeline parses nested GeoJSON into a structured DataFrame, enriches each event with reverse-geocoded country and continent attribution, USGS significance score, tsunami flags, felt reports, and CDI/MMI shaking intensity. K-Means clustering identifies the top 8 global earthquake hotzones from raw coordinates with no geographic prior, overlaid on a Folium world map alongside peer-reviewed PB2002 tectonic plate boundaries. A transparent 0–100 composite risk score per country blends event count, peak magnitude, USGS significance, and shallow event percentage, with a rules-based Notable Events narrative generating plain-English bullet points grounded in verifiable data checks — no LLM, no hallucination risk.</p>
+        <div class="project-impact">Greece recorded 291% above its 90-day baseline during the April 2026 test period — flagged automatically. A Nevada M4.78 event generated 764 public felt reports despite modest magnitude, correctly surfaced as the most widely-felt event via shallow depth scoring. K-Means independently identified the Ring of Fire's major subduction zones matching known seismological boundaries with no geographic input. The Turkey-Syria February 2023 window surfaces a textbook aftershock signature: M7.8 spike on February 6 followed by exponential decay with 570+ aftershocks in 24 hours visible in the daily activity chart. Statistical guardrails suppress misleading deviations when baseline sample sizes are too small — the dashboard is honest about when its own outputs can't be trusted.</div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Streamlit</span>
+          <span class="project-tag">Folium</span>
+          <span class="project-tag">Plotly</span>
+          <span class="project-tag">scikit-learn</span>
+          <span class="project-tag">USGS API</span>
+          <span class="project-tag">K-Means</span>
+          <span class="project-tag">pandas</span>
+        </div>
+        <div class="project-links">
+          <a href="https://earthquake-risk-dashboards.streamlit.app/" target="_blank" class="project-live"><span class="project-live-dot"></span> Check it live — Streamlit</a>
+          <a href="https://github.com/anirudh-rs/earthquake-risk-dashboard" target="_blank" class="project-live project-live-ghost"><span class="project-live-dot"></span> GitHub</a>
+        </div>
+      </div>
+      <div class="project-arrow">&#8599;</div>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">03</div>
+      <div class="project-body">
+        <div class="project-category">SQL · PostgreSQL · Data Engineering</div>
+        <div class="project-title">Sales Funnel Drop-off Analysis</div>
+        <p class="project-desc">A full end-to-end SQL analytics pipeline built entirely in PostgreSQL 18.3 — no Python, no external libraries — processing 109 million rows of real e-commerce events from an Eastern European electronics retailer across October and November 2019. Covers every stage a production data analyst would own: staging table ingestion of 14.2GB raw CSVs, a 5-script preprocessing pipeline (null audit, deduplication via ROW_NUMBER with ctid, DST-aware timestamp normalisation, IQR outlier detection, and a master clean view), followed by 5 analysis scripts covering funnel conversion, drop-off by brand and category, week-over-week trends using LAG/LEAD, and revenue concentration using NTILE and PERCENTILE_CONT. Visualised across 3 Tableau Public dashboards and a standalone HTML/CSS/Chart.js dashboard.</p>
+        <div class="project-impact">Overall funnel conversion 12.90%. The view-to-cart stage leaks 80.69% of users — 4,095,942 people lost at a single step. Total revenue $315M across 9 weeks. Singles Day drove 21.53% of 9-week revenue in one week with cart abandonment spiking to 58.51% — users loaded carts and deferred to Black Friday. The most surprising finding: cart abandonment is not a price problem. Converters and abandoners had virtually identical average cart prices ($209.70 vs $208.06, a $1.64 gap). The real differentiator was engagement depth — converted users viewed 40% more products and had twice as many cart interactions. Discounting is the wrong lever; product discovery is the right one. Top 10% of buyers generate 49.83% of revenue — a 50/10 distribution more concentrated than the classic Pareto rule.</div>
+        <div class="project-tags">
+          <span class="project-tag">PostgreSQL 18.3</span>
+          <span class="project-tag">pgAdmin</span>
+          <span class="project-tag">Pure SQL</span>
+          <span class="project-tag">CTEs</span>
+          <span class="project-tag">Window Functions</span>
+          <span class="project-tag">Tableau Public</span>
+        </div>
+        <div class="project-links">
+          <a href="https://public.tableau.com/app/profile/anirudh.raghavendra/viz/SalesFunnel1_17772564713410/Overview" target="_blank" class="project-live"><span class="project-live-dot"></span> Dashboard 1 — Overview</a>
+          <a href="https://public.tableau.com/app/profile/anirudh.raghavendra/viz/SalesFunnel2/Performance" target="_blank" class="project-live"><span class="project-live-dot"></span> Dashboard 2 — Performance</a>
+          <a href="https://public.tableau.com/app/profile/anirudh.raghavendra/viz/SalesFunnel3/RevenueInsights" target="_blank" class="project-live"><span class="project-live-dot"></span> Dashboard 3 — Revenue Insights</a>
+        </div>
+      </div>
+      <div class="project-arrow">&#8599;</div>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">04</div>
+      <div class="project-body">
+        <div class="project-category">ML · Clustering · Retail Analytics</div>
+        <div class="project-title">Retail Customer Segmentation &amp; Targeting Tool</div>
+        <p class="project-desc">A full end-to-end customer analytics pipeline processing 62 million transactions across three public retail datasets — UCI Online Retail II (UK gift retailer), H&M Fashion, and Instacart Grocery — unified into a single 7-column schema. Each dataset required different cleaning logic: UCI had 243k anonymous transactions and 18k cancellations, H&M had 2.97 million duplicates, and Instacart had no prices or dates requiring proxy engineering. An RFM scoring engine using quintile-based 1–5 scoring with inverted recency ranking segments 1,574,368 customers. K-Means with k=4 (deliberately overriding the silhouette-optimal k=2 in favour of actionable business output) identifies VIP, Champions, Regulars, and Lapsed tiers. Deployed as a six-page Streamlit dashboard with a segment explorer, marketing targeting tool, and churn risk report.</p>
+        <div class="project-impact">The same four-tier cluster structure emerged independently from three completely different retailers with no shared parameters — suggesting the RFM four-tier model reflects genuine retail customer behaviour, not an artefact of any one dataset. H&M VIP tier: 64,204 customers averaging 33 orders and £353 lifetime spend. Instacart Power Shoppers: 11,762 customers averaging 62 orders and 731 items lifetime. UCI outlier impact: 59 wholesale accounts (1% of customers) distorted all four clusters before 99th percentile capping. Scale: 62,027,333 transactions across 1,574,368 unique customers.</div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">K-Means</span>
+          <span class="project-tag">scikit-learn</span>
+          <span class="project-tag">Plotly</span>
+          <span class="project-tag">Streamlit</span>
+          <span class="project-tag">pandas</span>
+          <span class="project-tag">parquet</span>
+        </div>
+        <div class="project-links">
+          <a href="https://retail-customer-segmentation.streamlit.app" target="_blank" class="project-live"><span class="project-live-dot"></span> Check it live — Streamlit</a>
+          <a href="https://github.com/anirudh-rs/retail-customer-segmentation" target="_blank" class="project-live project-live-ghost"><span class="project-live-dot"></span> GitHub</a>
+        </div>
+      </div>
+      <div class="project-arrow">&#8599;</div>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">05</div>
+      <div class="project-body">
+        <div class="project-category">ML · Data Science · Streamlit</div>
+        <div class="project-title">PokeMeta Analyser</div>
+        <p class="project-desc">A full end-to-end data science pipeline analysing how the Pokemon competitive meta has shifted across all nine generations — covering 1,194 Pokemon, 606 Smogon-tiered entries, and ability data for all 1,025 base form Pokemon fetched programmatically from PokeAPI. Two XGBoost models are trained: a binary viability classifier and a 3-class tier classifier. The headline feature is the Viability Predictor — input any custom Pokemon's stats, typing, and ability and receive a viability verdict with probability, SHAP waterfall chart, tier prediction, nature recommendation accounting for ability interactions, speed tier calculator with ability modifiers, and a Type Matchup Defender with ability-granted immunity overrides (Levitate removes Ground, Flash Fire removes Fire, and 9 others). Delivered as a 9-tab Streamlit dashboard.</p>
+        <div class="project-impact">Binary classifier: ROC-AUC 0.9452, 89.3% accuracy on a fully held-out Gen 8 test set — model almost never misses a genuinely viable Pokemon (1 false negative on 84-Pokemon test set). Adding ability scores improved ROC-AUC from 0.932 to 0.9452. 43 of 112 Gen 9 Pokemon predicted viable before any official Smogon tier data existed. Fairy type went from 1.3% of Gen 5 to 17.6% of Gen 6 in one generation — the single largest type shift in the dataset. Gen 6 leads Power Rankings at 37.2% viable. Legendary BST gap peaked at 253 points in Gen 6, now just 116 in Gen 9. 27 Pokemon identified as statistically overrated — good stats undermined by crippling abilities (Truant, Slow Start, Defeatist).</div>
+        <div class="project-tags">
+          <span class="project-tag">XGBoost</span>
+          <span class="project-tag">SHAP</span>
+          <span class="project-tag">Streamlit</span>
+          <span class="project-tag">Plotly</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">PokeAPI</span>
+          <span class="project-tag">scikit-learn</span>
+        </div>
+        <div class="project-links">
+          <a href="https://pokemon-meta-tracker.streamlit.app/" target="_blank" class="project-live"><span class="project-live-dot"></span> Check it live — Streamlit</a>
+        </div>
+      </div>
+      <div class="project-arrow">&#8599;</div>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">06</div>
+      <div class="project-body">
+        <div class="project-category">SQL · Statistics · A/B Testing</div>
+        <div class="project-title">A/B Test Results Analysis</div>
+        <p class="project-desc">A complete statistical experimentation framework built entirely in PostgreSQL — no Python or R for analysis. A 4-table relational schema stores 882,000+ rows from two real e-commerce experiments. The statistical engine computes z-scores, p-values via a SQL implementation of the normal CDF using the error function, 95% confidence intervals, and pooled proportion z-tests — all in pure SQL, mirroring how experimentation analytics works inside data teams at scale. Three independent validation methods (z-scores, p-values, confidence intervals) all consistent with each other. Results written back into a persistent analysis_summary table. Three Tableau Public dashboards cover experiment results, ad exposure deep dive, and test integrity.</p>
+        <div class="project-impact">Landing page test returned no significant difference (z=1.24, p=0.39) — do not ship, despite 294,000 users in test. Ad group drove 43% relative conversion uplift over PSA (z=7.37, p≈0.00). Users shown 100+ ads converted at 17.14% vs 0.33% for 1-10 ad exposures — a 52x difference. Traffic split held at a perfect 50/50 every day across all 23 days. 1.3% of users received mismatched page assignments — a data quality issue caught and flagged. Conversion rates stabilised within 3 days confirming adequate test duration. The inconclusive landing page result is as valuable as the significant ad result — it prevented a wasted engineering rollout.</div>
+        <div class="project-tags">
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">pgAdmin</span>
+          <span class="project-tag">Pure SQL</span>
+          <span class="project-tag">Statistics</span>
+          <span class="project-tag">Tableau Public</span>
+        </div>
+        <div class="project-links">
+          <a href="https://public.tableau.com/app/profile/anirudh.raghavendra/viz/ABTesting1_17771333267360/ExperimentsResultsSummary" target="_blank" class="project-live"><span class="project-live-dot"></span> Dashboard 1 — Experiment Results</a>
+          <a href="https://public.tableau.com/app/profile/anirudh.raghavendra/viz/ABTesting2_17771333874980/AdExposureAnalysis" target="_blank" class="project-live"><span class="project-live-dot"></span> Dashboard 2 — Ad Exposure</a>
+          <a href="https://public.tableau.com/app/profile/anirudh.raghavendra/viz/ABTesting3/TestIntegrityTimeSeries" target="_blank" class="project-live"><span class="project-live-dot"></span> Dashboard 3 — Test Integrity</a>
+        </div>
+      </div>
+      <div class="project-arrow">&#8599;</div>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">07</div>
+      <div class="project-body">
+        <div class="project-category">ML · IoT · Time Series · Streamlit</div>
+        <div class="project-title">AI Smart Home Analytics Platform</div>
+        <p class="project-desc">A full end-to-end IoT analytics pipeline with seven distinct layers: an MQTT broker (Mosquitto) with a Python device simulator publishing sensor readings, a UCI adapter ingesting 19,735 real household readings from a Belgian smart home across a full winter-to-spring seasonal transition, a supervised Random Forest classifier predicting optimal device states per hour, an Isolation Forest anomaly detector flagging unusual sensor combinations, a Prophet time-series model with external temperature and humidity regressors forecasting 14-day energy consumption, a business KPI engine computing five metrics with plain-English recommendations, and a rule engine converting predictions into 48 human-readable JSON automation rules. Deployed as a seven-section Streamlit dashboard.</p>
+        <div class="project-impact">Light habit model accuracy jumped from 50% on simulated data to 88% on real UCI data — demonstrating exactly why synthetic data is insufficient for credible ML claims. Isolation Forest flagged 5.0% anomaly rate including midnight lights-on events and 3–4am motion detection. Prophet projected $693 annual energy cost with 95% confidence intervals. Peak usage hours 20:00–22:00 correctly identified from 138 days of real data without manual labelling. Key honest decision: when all light rules showed OFF (accurate for LED household), the binary chart was replaced with actual hourly Wh consumption rather than faking ON states to fill it — documented in the README as a Known Limitation and a strong interview talking point.</div>
+        <div class="project-tags">
+          <span class="project-tag">scikit-learn</span>
+          <span class="project-tag">Prophet</span>
+          <span class="project-tag">MQTT</span>
+          <span class="project-tag">Isolation Forest</span>
+          <span class="project-tag">Random Forest</span>
+          <span class="project-tag">Plotly</span>
+          <span class="project-tag">Streamlit</span>
+        </div>
+        <div class="project-links">
+          <a href="https://anirudh-smart-home.streamlit.app/" target="_blank" class="project-live"><span class="project-live-dot"></span> Check it live — Streamlit</a>
+          <a href="https://github.com/anirudh-rs/ai-smart-home" target="_blank" class="project-live project-live-ghost"><span class="project-live-dot"></span> GitHub</a>
+        </div>
+      </div>
+      <div class="project-arrow">&#8599;</div>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">08</div>
+      <div class="project-body">
+        <div class="project-category">ML · Data Engineering · PostgreSQL · Tableau</div>
+        <div class="project-title">US Flight Delay Prediction System</div>
+        <p class="project-desc">A fully reproducible end-to-end data science pipeline predicting whether a US domestic flight will be delayed and by how much. Ingests and cleans 3 million raw BTS flight records, loads them into PostgreSQL, engineers 23 predictive features through SQL aggregations and Python transformations, fetches real historical weather data from Open-Meteo API across 142 US airports (covering 95.8% of flight volume), trains two XGBoost models, and exports purpose-built analytical CSVs into a four-dashboard Tableau Public publication. Pandemic years 2020–2021 deliberately excluded — structurally abnormal delay patterns would degrade model generalisation to normal operations. Switched from regression (R²=0.04) to four-bracket classification after diagnosing that exact minute prediction is fundamentally limited without real-time ATC data.</p>
+        <div class="project-impact">Binary delay classifier: ROC-AUC 0.7203, competitive with published academic benchmarks (0.68–0.75 range). Bracket classifier: Weighted F1 0.595, on-time precision 89% — when the model says on-time it's right nearly 9 times out of 10. Departure hour is the strongest predictor (SHAP=0.38), nearly double the second-ranked feature. Route delay rate (SHAP=0.23) reveals certain routes are structurally delayed regardless of conditions. Carrier reliability outranks weather as a predictor — who you fly with matters more than the forecast. Friday evening departures from major hubs consistently show highest delay rates across all three years.</div>
+        <div class="project-tags">
+          <span class="project-tag">XGBoost</span>
+          <span class="project-tag">SHAP</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Open-Meteo API</span>
+          <span class="project-tag">Tableau Public</span>
+          <span class="project-tag">SQLAlchemy</span>
+        </div>
+        <div class="project-links">
+          <a href="https://public.tableau.com/app/profile/anirudh.raghavendra/viz/USFlightDelayPredictionSystem/AirlinePerformanceDelayTrends" target="_blank" class="project-live"><span class="project-live-dot"></span> Dashboard 1 — Airline Performance</a>
+          <a href="https://public.tableau.com/app/profile/anirudh.raghavendra/viz/USFlightDelayPredictionSystem2/RouteAirportDelayMap" target="_blank" class="project-live"><span class="project-live-dot"></span> Dashboard 2 — Route &amp; Airport Map</a>
+          <a href="https://public.tableau.com/app/profile/anirudh.raghavendra/viz/USFlightDelayPredictionSystem3/DelayPatternsandWeatherImpact" target="_blank" class="project-live"><span class="project-live-dot"></span> Dashboard 3 — Weather Impact</a>
+          <a href="https://public.tableau.com/app/profile/anirudh.raghavendra/viz/USFlightDelayPredictionSystem4/ModelPerformanceKeyDrivers" target="_blank" class="project-live"><span class="project-live-dot"></span> Dashboard 4 — Model Performance</a>
+          <a href="https://github.com/anirudh-rs/flight-delay-prediction" target="_blank" class="project-live project-live-ghost"><span class="project-live-dot"></span> GitHub</a>
+        </div>
+      </div>
+      <div class="project-arrow">&#8599;</div>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">09</div>
+      <div class="project-body">
+        <div class="project-category">ML · HR Analytics · Dashboard</div>
+        <div class="project-title">Employee Attrition Intelligence Dashboard</div>
+        <p class="project-desc">An end-to-end HR analytics platform predicting which employees are likely to leave and explaining why — in plain language a manager can act on before the resignation happens. Three Kaggle datasets merged into one enriched master dataset of 1,470 employees across 40 features using probabilistic statistical matching (no shared employee ID existed). Six custom signals engineered: BurnoutPressureIndex, PromotionStagnation, SalaryPerLevel, CareerVelocity, ManagerStability, and TotalSatisfaction. XGBoost trained on SMOTE-balanced data; threshold tuned from 0.50 to 0.29 via F1 maximisation on the minority class (+17 percentage points recall). Five-tab Streamlit dashboard including a live BLS JOLTS API benchmark tab pulling real national quit rates.</p>
+        <div class="project-impact">ROC-AUC 0.7797. Recall improved from 36% to 53% through threshold tuning alone — without changing the underlying model. 203 of 1,470 employees flagged as high risk (13.8%). Stock Option Level was the #1 attrition driver — beating overtime, salary, and satisfaction. Burnout score was lower among employees who left — disengaged employees do less work, not more. WFH availability correlated with higher attrition — more marketable employees have more outside options. EngagementSurvey ranked 6th in global SHAP importance, validating the decision to enrich the IBM dataset with HRDataset v14.</div>
+        <div class="project-tags">
+          <span class="project-tag">XGBoost</span>
+          <span class="project-tag">SHAP</span>
+          <span class="project-tag">SMOTE</span>
+          <span class="project-tag">Streamlit</span>
+          <span class="project-tag">Plotly</span>
+          <span class="project-tag">BLS API</span>
+          <span class="project-tag">Python</span>
+        </div>
+        <div class="project-links">
+          <a href="https://hr-attrition-analytics-dashboard.streamlit.app/" target="_blank" class="project-live"><span class="project-live-dot"></span> Check it live — Streamlit</a>
+        </div>
+      </div>
+      <div class="project-arrow">&#8599;</div>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">10</div>
+      <div class="project-body">
+        <div class="project-category">AI · RAG · NLP · LangChain</div>
+        <div class="project-title">PL 24/25 Assist — Premier League RAG Assistant</div>
+        <p class="project-desc">An end-to-end RAG pipeline enabling natural language Q&amp;A over 21 Premier League Wikipedia documents. PDFs loaded via PyPDFLoader, chunked with RecursiveCharacterTextSplitter (chunk size 1000, overlap 200), embedded with OpenAI text-embedding-3-small, and stored in a persistent ChromaDB vector store. On each query: the pipeline expands the query with season and club context, retrieves k=14 chunks, reorders by source priority, injects standings chunks for position/comparison questions, labels each chunk by type, and passes labelled context with sliding window conversation history (last 3 turns) to GPT-4o via ChatPromptTemplate. Returns answers with page-level source citations. Club focus mode shifts both retrieval priority and system prompt framing without any architectural change.</p>
+        <div class="project-impact">3,097 total chunks across 21 documents. Basic RAG with k=10 and no query expansion returned completely irrelevant chunks — wrong clubs in 100% of retrieved results. Query expansion alone fixed club-specific retrieval. Standings injection was necessary for comparison questions — without it GPT-4o cited Europa League qualification to rank teams rather than reading the actual table. Context labelling eliminated cross-contamination hallucinations. Conversation memory enables accurate follow-up resolution — "how many points did they finish with?" correctly resolves "they" from prior turn. ChromaDB committed to repo to avoid cold-start re-ingestion on Streamlit Cloud's ephemeral filesystem.</div>
+        <div class="project-tags">
+          <span class="project-tag">LangChain</span>
+          <span class="project-tag">ChromaDB</span>
+          <span class="project-tag">GPT-4o</span>
+          <span class="project-tag">OpenAI Embeddings</span>
+          <span class="project-tag">Streamlit</span>
+          <span class="project-tag">Python</span>
+        </div>
+        <div class="project-links">
+          <a href="https://rag-document-assistant-ralxaxcpjy4pzwmt3phjoe.streamlit.app/" target="_blank" class="project-live"><span class="project-live-dot"></span> Check it live — Streamlit</a>
+        </div>
+      </div>
+      <div class="project-arrow">&#8599;</div>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">11</div>
+      <div class="project-body">
+        <div class="project-category">AI · Audio · ML · Streamlit</div>
+        <div class="project-title">AI Stem Separation &amp; Remix Tool</div>
+        <p class="project-desc">A full audio intelligence pipeline: file upload → AI stem separation via Meta Demucs htdemucs_6s → feature extraction via librosa → genre classification via per-stem XGBoost models → visualisation dashboard → PDF/CSV report generation → cloud deployment. Per-stem XGBoost models rather than one generic classifier — drums use zero crossing rate and beat count, piano and guitar use chroma and harmonic content, vocals use MFCCs. Confidence thresholding at 55%: predictions below this return Inconclusive rather than a wrong answer — a deliberate acknowledgement that GTZAN was trained on full mixed songs, not isolated stems. Two songs can be analysed independently in parallel without overwriting each other, with a comparison tab.</p>
+        <div class="project-impact">67% genre classification accuracy across 10 genres on 1,000 GTZAN samples — versus 10% random baseline. Classical achieved 100% accuracy — most distinct sonic fingerprint of all genres. Rock scored lowest at 40% — most confused with metal and country. Bohemian Rhapsody and Don't Stop Me Now both demonstrated guitar/piano frequency overlap limitation (300–2000Hz shared range). Blackbird and Someone Like You separated correctly with zero false detections — sparse acoustic arrangements work best. Model trained automatically on first run via Hugging Face — models too large for the repo are detected on startup and trained from the CSV already in the repository.</div>
+        <div class="project-tags">
+          <span class="project-tag">Meta Demucs</span>
+          <span class="project-tag">librosa</span>
+          <span class="project-tag">XGBoost</span>
+          <span class="project-tag">scikit-learn</span>
+          <span class="project-tag">Streamlit</span>
+          <span class="project-tag">Hugging Face</span>
+          <span class="project-tag">PyTorch</span>
+        </div>
+        <div class="project-links">
+          <a href="https://anirudh-rs-ai-stem-separator.hf.space" target="_blank" class="project-live"><span class="project-live-dot"></span> Check it live — Hugging Face</a>
+        </div>
+      </div>
+      <div class="project-arrow">&#8599;</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="full-divider" />
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="section-label reveal">Get in touch</div>
+    <h2 class="reveal">Let's talk</h2>
+    <div class="contact-layout">
+      <div class="contact-left reveal">
+        <p class="contact-intro">"I'm currently open to full-time data analyst and data scientist roles. If you're working on something interesting — or just want to talk data — I'd love to hear from you."</p>
+        <p style="font-size:13.5px; color:var(--ink3); line-height:1.8;">Based in Irvine, CA · Open to relocation<br>Available immediately</p>
+      </div>
+      <div class="contact-right reveal reveal-delay-1">
+        <a href="mailto:anirudh.raghavendra7@gmail.com" class="contact-link"><span class="contact-icon">&#9993;</span><div class="contact-text"><div class="contact-label">Email</div><div class="contact-value">anirudh.raghavendra7@gmail.com</div></div><span class="contact-arrow">&#8599;</span></a>
+        <a href="https://linkedin.com/in/anirudhragh7/" target="_blank" class="contact-link">
+          <span class="contact-icon">in</span>
+          <div class="contact-text">
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/anirudhragh7</div>
+          </div>
+          <span class="contact-arrow">↗</span>
+        </a>
+        <a href="tel:+14307020633" class="contact-link">
+          <span class="contact-icon">#</span>
+          <div class="contact-text">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+1 430 702 0633</div>
+          </div>
+          <span class="contact-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="max-width:1100px; margin:0 auto; border-top: 0.5px solid var(--border);"></div>
+<footer>
+  <span class="footer-text">© 2026 Anirudh Raghavendra</span>
+
+</footer>
+</div><!-- end main-content -->
+
+<script>
+  // Restore theme preference
+  (function() {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      var tl = document.getElementById('tl');
+      if (tl) tl.textContent = 'Light mode';
+    }
+  })();
+
+  // Theme toggle
+  document.getElementById('themeBtn').addEventListener('click', function() {
+    var dark = document.body.classList.toggle('dark');
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    document.getElementById('tl').textContent = dark ? 'Light mode' : 'Dark mode';
+  });
+
+  // Sidebar open/close
+  var hamburger = document.getElementById('hamburger');
+  var overlay = document.getElementById('sidebarOverlay');
+
+  hamburger.addEventListener('click', function() {
+    document.body.classList.toggle('nav-open');
+  });
+  overlay.addEventListener('click', function() {
+    document.body.classList.remove('nav-open');
+  });
+  document.querySelectorAll('.sidebar-nav a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.body.classList.remove('nav-open');
+    });
+  });
+
+  // Progress bar
+  var bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', function() {
+    var pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    bar.style.width = pct + '%';
+  });
+
+  // Active nav link on scroll
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.sidebar-nav a');
+  window.addEventListener('scroll', function() {
+    var current = '';
+    sections.forEach(function(s) {
+      if (window.scrollY >= s.offsetTop - 200) current = s.getAttribute('id');
+    });
+    navLinks.forEach(function(a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Scroll reveal
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
